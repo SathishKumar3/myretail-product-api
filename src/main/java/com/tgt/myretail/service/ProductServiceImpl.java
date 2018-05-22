@@ -54,6 +54,7 @@ public class ProductServiceImpl implements ProductService {
         if (redSkyServiceResponse == null) {
             throw new ProductNotFoundException(productDto.getProductId());
         }
+        //TODO:Null Check
         productDto.setName(redSkyServiceResponse.getProduct().getItem().getProductDescription().getTitle());
         return productDto;
     }

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductDaoImpl implements ProductDao {
 
+    private final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(ProductDaoImpl.class);
+
     public static final String CURRENCY_CODE = "USD";
     @Autowired
     public ProductRepository productRepository;
@@ -30,10 +32,16 @@ public class ProductDaoImpl implements ProductDao {
         } else {
             return null;
         }
+
     }
 
     private Product fetchProductById(String productId) {
-        return productRepository.findByProductId(productId);
+        try {
+            return productRepository.findByProductId(productId);
+        } catch (MongoException ex) {
+            LOGGER.debug("MongoException DB - " + ex.getMessage());
+        }
+        return null;
     }
 
     /**
@@ -45,14 +53,21 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public boolean updatePriceByProductId(ProductRequest productRequest) {
-        boolean isUpdateSuccess = false;
-        Product product = fetchProductById(productRequest.getProductId());
 
-        if (product != null) {
-            product.setPrice(productRequest.getPrice());
-            productRepository.save(product);
-            isUpdateSuccess = true;
+        boolean isUpdateSuccess = false;
+        try {
+            Product product = fetchProductById(productRequest.getProductId());
+
+            if (product != null) {
+                product.setPrice(productRequest.getPrice());
+                productRepository.save(product);
+                isUpdateSuccess = true;
+            }
+        } catch (MongoException ex) {
+            LOGGER.debug("MongoException DB - " + ex.getMessage());
         }
         return isUpdateSuccess;
     }
+
+
 }
