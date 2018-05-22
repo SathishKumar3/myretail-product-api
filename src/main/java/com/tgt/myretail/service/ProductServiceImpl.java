@@ -39,6 +39,11 @@ public class ProductServiceImpl implements ProductService {
         restServiceTemplate = new RestServiceTemplate(RedSkyServiceResponse.class);
     }
 
+    /**
+     * @param productDto
+     * @return
+     * @throws ProductNotFoundException
+     */
     @Override
     public ProductDto fetchProductById(ProductDto productDto) throws ProductNotFoundException {
 
@@ -53,6 +58,12 @@ public class ProductServiceImpl implements ProductService {
         return productDto;
     }
 
+    /**
+     *
+     * @param productDto
+     * @return
+     * @throws ProductNotFoundException
+     */
     @Override
     public ProductDto fetchPriceDetails(ProductDto productDto) throws ProductNotFoundException {
         productDao.findByProductId(productDto);
@@ -64,6 +75,12 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
+    /**
+     *
+     * @param productRequest
+     * @return
+     * @throws ProductNotFoundException
+     */
 
     public GenericResponse updateProductPrice(ProductRequest productRequest) throws ProductNotFoundException {
         boolean isUpdateSuccess = productDao.updatePriceByProductId(productRequest);

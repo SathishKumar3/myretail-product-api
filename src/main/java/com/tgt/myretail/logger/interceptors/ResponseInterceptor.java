@@ -22,12 +22,27 @@ public class ResponseInterceptor implements ResponseBodyAdvice<Object> {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(ResponseInterceptor.class);
 
+    /**
+     * @param returnType
+     * @param converterType
+     * @return
+     */
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
 
         return true;
     }
 
+    /**
+     *
+     * @param body
+     * @param returnType
+     * @param selectedContentType
+     * @param selectedConverterType
+     * @param request
+     * @param response
+     * @return
+     */
 
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType,

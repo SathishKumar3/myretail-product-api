@@ -18,13 +18,6 @@ public class DefaultHeaderRequestDto {
     private HttpHeaders httpHeaders;
     private Map<String, Long> uriParams = new HashMap<>();
 
-    public Map getUriParams() {
-        return uriParams;
-    }
-
-    public void setUriParams(Map<String, Long> uriParams) {
-        this.uriParams = uriParams;
-    }
 
     public String getEndPointURL() {
         return endPointURL;

@@ -28,6 +28,11 @@ public class RestServiceTemplate<R> {
         this.restTemplate = restTemplate;
     }
 
+    /**
+     * @param headerDto
+     * @param uriVariables
+     * @return
+     */
     public R callRestService(DefaultHeaderRequestDto headerDto, Map uriVariables) {
         ResponseEntity<R> reponse = null;
 

@@ -5,6 +5,9 @@ public class BusinessException extends RuntimeException {
 
     private String errorCode;
 
+    /**
+     * @param errorCode
+     */
     public BusinessException(String errorCode) {
         super();
         this.errorCode = errorCode;

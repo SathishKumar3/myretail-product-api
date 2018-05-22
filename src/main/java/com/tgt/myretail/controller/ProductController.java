@@ -1,4 +1,4 @@
-package com.tgt.myretail.it.controller;
+package com.tgt.myretail.controller;
 
 import com.tgt.myretail.dto.GenericResponse;
 import com.tgt.myretail.dto.ProductDto;
@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * ProductController exposes Get and Post service for /products
+ */
+
 @RestController
 @RequestMapping("/products")
 @Api(value = "MyRetail", description = "MyRetail-Product-Rest-API")
@@ -27,12 +31,26 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    /**
+     * Get Method- Retrieve product details from redsky service and price details from database
+     *
+     * @param productId
+     * @return
+     */
     @GetMapping(VERSION + "/product/{productId}")
     public ResponseEntity<?> retrieveProductDetails(@PathVariable("productId") String productId) {
         ProductDto productDto = productCompositeService.fetchProductById(productId);
         return ResponseEntity.ok().body(productDto);
     }
 
+    /**
+     * Post method-  Update price details for the available product
+     *
+     * @param productRequest
+     * @param bindingResult
+     * @return
+     * @throws ProductValidationException
+     */
     @PostMapping(VERSION + "/product")
     public ResponseEntity<?> updateProductPrice(@Valid @RequestBody ProductRequest productRequest, BindingResult bindingResult) throws ProductValidationException {
 

@@ -1,10 +1,10 @@
 package com.tgt.myretail.exceptionhandler;
 
 
+import com.tgt.myretail.controller.ProductController;
 import com.tgt.myretail.dto.GenericResponse;
 import com.tgt.myretail.exceptionhandler.exception.ProductNotFoundException;
 import com.tgt.myretail.exceptionhandler.exception.ProductValidationException;
-import com.tgt.myretail.it.controller.ProductController;
 import com.tgt.myretail.request.ProductRequest;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpHeaders;
@@ -18,9 +18,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.stream.Collectors;
 
+/**
+ * Handles all exception for ProductController
+ */
 @ControllerAdvice(assignableTypes = ProductController.class)
 public class ProductExceptionHandler extends ResponseEntityExceptionHandler {
 
+    /**
+     * @param ex
+     * @param webRequest
+     * @return
+     */
     @ExceptionHandler(value = ProductNotFoundException.class)
     protected ResponseEntity<?> handleProductNotFoundException(ProductNotFoundException ex, WebRequest webRequest) {
         GenericResponse genericResponse = new GenericResponse();
@@ -30,6 +38,12 @@ public class ProductExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, genericResponse, new HttpHeaders(), HttpStatus.OK, webRequest);
     }
 
+    /**
+     *
+     * @param ex
+     * @param webRequest
+     * @return
+     */
     @ExceptionHandler(value = ProductValidationException.class)
     protected ResponseEntity<?> handleProductValidationException(ProductValidationException ex, WebRequest webRequest) {
         GenericResponse genericResponse = new GenericResponse();

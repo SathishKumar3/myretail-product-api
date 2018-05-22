@@ -10,6 +10,10 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
     @Autowired
     private ProductService productService;
 
+    /**
+     * @param productId
+     * @return
+     */
     @Override
     public ProductDto fetchProductById(String productId) {
         ProductDto productDto = new ProductDto();

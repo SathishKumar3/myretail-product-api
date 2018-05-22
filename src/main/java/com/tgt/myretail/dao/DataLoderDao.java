@@ -22,6 +22,10 @@ public class DataLoderDao {
         insertProductData();
     }
 
+    /**
+     * Delete previous data and inserts new data when application start up.
+     **/
+
     private void insertProductData() {
         if (productRepository != null) {
             this.productRepository.deleteAll();

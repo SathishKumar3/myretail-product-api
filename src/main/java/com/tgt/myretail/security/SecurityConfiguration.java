@@ -22,6 +22,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Value("${spring.security.user.password}")
     private String authSecret;
 
+    /**
+     * @param httpSecurity
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -33,6 +37,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable();
     }
 
+    /**
+     *
+     * @return
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager memoryUserDetailsManager = new InMemoryUserDetailsManager();

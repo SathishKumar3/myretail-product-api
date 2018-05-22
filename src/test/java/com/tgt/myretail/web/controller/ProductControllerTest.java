@@ -1,10 +1,10 @@
 package com.tgt.myretail.web.controller;
 
+import com.tgt.myretail.controller.ProductController;
 import com.tgt.myretail.dto.GenericResponse;
 import com.tgt.myretail.dto.PriceInfoDto;
 import com.tgt.myretail.dto.ProductDto;
 import com.tgt.myretail.exceptionhandler.exception.ProductNotFoundException;
-import com.tgt.myretail.it.controller.ProductController;
 import com.tgt.myretail.logger.interceptors.RequestInterceptor;
 import com.tgt.myretail.request.ProductRequest;
 import com.tgt.myretail.service.ProductCompositeService;

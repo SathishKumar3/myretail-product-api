@@ -16,6 +16,9 @@ public class RequestLogUtil {
     private static final Set<String> EXCLUDED_HEADERS = new HashSet<>(Arrays.asList("cookie", "authorization"));
     private final static Logger LOGGER = LoggerFactory.getLogger(RequestLogUtil.class);
 
+    /**
+     * @param request
+     */
     public static void writeRequestToLog(HttpServletRequest request) {
         StringBuilder builder = new StringBuilder();
         MDC.put(EnumLoggingKeys.TRANSACTION.getValue(), UUID.randomUUID().toString());

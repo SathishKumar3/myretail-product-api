@@ -16,12 +16,19 @@ public class WebPathMatchConfig implements WebMvcConfigurer {
     @Autowired
     private RequestInterceptor requestInterceptor;
 
+    /**
+     * @param pathMatchConfigurer
+     */
     @Override
     public void configurePathMatch(PathMatchConfigurer pathMatchConfigurer) {
         AntPathMatcher pathMatcher = new AntPathMatcher();
         pathMatcher.setCaseSensitive(false);
     }
 
+    /**
+     *
+     * @param registry
+     */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(requestInterceptor).addPathPatterns("/**");

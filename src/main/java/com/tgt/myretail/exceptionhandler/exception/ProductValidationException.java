@@ -5,10 +5,21 @@ import com.tgt.myretail.exceptionhandler.BusinessException;
 import com.tgt.myretail.request.ProductRequest;
 import org.springframework.validation.BindingResult;
 
+/**
+ * ProductValidationException- Handled exception when there is validation while updating price.
+ */
+
+
 public class ProductValidationException extends BusinessException {
 
     private BindingResult bindingResult;
     private ProductRequest productRequest;
+
+    /**
+     *
+     * @param bindingResult
+     * @param productRequest
+     */
 
     public ProductValidationException(BindingResult bindingResult, ProductRequest productRequest) {
         super();

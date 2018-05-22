@@ -14,6 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 public class RequestInterceptor extends HandlerInterceptorAdapter {
     private final static Logger LOGGER = LoggerFactory.getLogger(RequestInterceptor.class);
 
+    /**
+     * @param request
+     * @param response
+     * @param handler
+     * @return
+     */
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         HttpServletRequest requestCacheWrapperObject = null;

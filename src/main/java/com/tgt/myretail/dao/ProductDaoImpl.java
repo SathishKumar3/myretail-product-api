@@ -14,6 +14,12 @@ public class ProductDaoImpl implements ProductDao {
     @Autowired
     public ProductRepository productRepository;
 
+    /**
+     * Fetch product price details
+     *
+     * @param productDto
+     * @return
+     */
     @Override
     public ProductDto findByProductId(ProductDto productDto) {
         Product product = fetchProductById(productDto.getProductId());
@@ -29,6 +35,13 @@ public class ProductDaoImpl implements ProductDao {
     private Product fetchProductById(String productId) {
         return productRepository.findByProductId(productId);
     }
+
+    /**
+     * Update price details for the product
+     *
+     * @param productRequest
+     * @return
+     */
 
     @Override
     public boolean updatePriceByProductId(ProductRequest productRequest) {
