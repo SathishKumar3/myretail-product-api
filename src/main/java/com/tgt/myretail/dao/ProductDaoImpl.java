@@ -7,6 +7,7 @@ import com.tgt.myretail.request.ProductRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.mongodb.MongoException;
+import org.slf4j.LoggerFactory;
 
 @Repository
 public class ProductDaoImpl implements ProductDao {
