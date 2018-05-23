@@ -42,6 +42,8 @@ C:\Program Files\MongoDB\Server\3.2\bin>mongod (by default, mongodb server will 
  Get Method  : http://localhost:8080/products/v1/product/{productid}   (Not secured)
  
  Post Method : http://localhost:8080/products/v1/product  (secured- Admin/Admin)
+ 
+ TestData : productId- 13860428
   ```
  
  
