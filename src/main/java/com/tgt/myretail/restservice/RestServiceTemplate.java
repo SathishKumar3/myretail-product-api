@@ -15,7 +15,7 @@ import java.util.Map;
 public class RestServiceTemplate<R> {
 
     private final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(RestServiceTemplate.class);
-    @Autowired
+    
     public RestTemplate restTemplate;
     private Class<R> responseClass;
 
